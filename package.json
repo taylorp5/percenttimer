@@ -4,18 +4,33 @@
   "main": "index.ts",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "test": "jest",
+    "validate:modules": "node -e \"const fs=require('fs');const path=require('path');const root=process.cwd();const modulesDir=path.join(root,'modules');if(!fs.existsSync(modulesDir)){console.error('Missing modules directory:',modulesDir);process.exit(1);}for(const entry of fs.readdirSync(modulesDir,{withFileTypes:true})){if(!entry.isDirectory()) continue;const pkg=path.join(modulesDir,entry.name,'package.json');if(!fs.existsSync(pkg)) continue;const data=fs.readFileSync(pkg,'utf8');JSON.parse(data);}console.log('Module package.json files valid.');\"",
+    "preflight:eas": "npm run validate:modules && npx expo-doctor && npm test"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.2.0",
+    "@react-native-community/datetimepicker": "8.4.4",
+    "@react-navigation/native": "^7.1.28",
+    "@react-navigation/native-stack": "^7.11.0",
+    "@sentry/react-native": "~7.2.0",
     "expo": "~54.0.32",
+    "expo-dev-client": "~6.0.20",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",
-    "react-native": "0.81.5"
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "shared-state": "file:./modules/shared-state"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/react": "~19.1.0",
+    "jest": "^29.7.0",
+    "jest-expo": "~54.0.3",
     "typescript": "~5.9.2"
   },
   "private": true

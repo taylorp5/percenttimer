@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">PercentTimer</string>
+  <string name="expo_splash_screen_resize_mode" translatable="false">contain</string>
+  <string name="expo_splash_screen_status_bar_translucent" translatable="false">false</string>
+  <string name="widget_small_label">PercentTimer (Small)</string>
+  <string name="widget_medium_label">PercentTimer (Medium)</string>
+  <string name="widget_circle_label">PercentTimer (Circle)</string>
+</resources>

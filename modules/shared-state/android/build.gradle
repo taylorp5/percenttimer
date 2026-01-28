@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+group = 'com.percenttime.sharedstate'
+version = '1.0.0'
+
+android {
+  compileSdkVersion rootProject.ext.compileSdkVersion
+
+  defaultConfig {
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
+  }
+
+  namespace "com.percenttime.sharedstate"
+}
+
+dependencies {
+  implementation project(':expo-modules-core')
+  implementation("com.facebook.react:react-android")
+}

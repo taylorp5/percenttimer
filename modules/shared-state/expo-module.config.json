@@ -1,0 +1,10 @@
+{
+  "name": "shared-state",
+  "platforms": ["ios", "android"],
+  "ios": {
+    "modules": ["SharedStateModule"]
+  },
+  "android": {
+    "modules": ["com.percenttime.sharedstate.SharedStateModule"]
+  }
+}

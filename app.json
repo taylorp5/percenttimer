@@ -1,11 +1,21 @@
 {
   "expo": {
-    "name": "PercentTime",
-    "slug": "PercentTime",
-    "version": "1.0.0",
+    "name": "PercentTimer",
+    "slug": "percenttimer",
+    "version": "1.0.3",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/PTIOSICON.png",
+    "userInterfaceStyle": "automatic",
+    "plugins": [
+      "expo-dev-client",
+      [
+        "./plugins/withSharedState",
+        {
+          "appGroupIdentifier": "group.com.taylor.percenttimer"
+        }
+      ],
+      "@sentry/react-native"
+    ],
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -13,18 +23,30 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.taylor.percenttimer",
+      "buildNumber": "4",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/PTIOSICON.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.taylor.percenttimer",
+      "versionCode": 4
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d52d7537-84fd-4023-a690-825d89f72e8d"
+      }
     }
   }
 }

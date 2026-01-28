@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/widget_root"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="12dp"
+  android:background="@android:color/transparent">
+
+  <ImageView
+    android:id="@+id/widget_refresh"
+    android:layout_width="18dp"
+    android:layout_height="18dp"
+    android:layout_gravity="top|end"
+    android:src="@android:drawable/ic_popup_sync"
+    android:contentDescription="" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:clipToOutline="true">
+
+    <FrameLayout
+      android:layout_width="96dp"
+      android:layout_height="96dp"
+      android:layout_gravity="center">
+
+      <ImageView
+        android:id="@+id/widget_ring_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/widget_ring_bg_light"
+        android:contentDescription="" />
+
+      <ImageView
+        android:id="@+id/widget_ring_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/widget_ring_progress"
+        android:contentDescription="" />
+
+      <TextView
+        android:id="@+id/widget_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="66%"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#111111"
+        android:includeFontPadding="false" />
+    </FrameLayout>
+
+    <TextView
+      android:id="@+id/widget_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="6dp"
+      android:text="Day"
+      android:textSize="12sp"
+      android:textColor="#6B7280"
+      android:maxLines="1"
+      android:ellipsize="end"
+      android:includeFontPadding="false" />
+  </LinearLayout>
+</FrameLayout>

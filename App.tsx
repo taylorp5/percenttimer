@@ -1,20 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as Sentry from '@sentry/react-native';
+import { useColorScheme } from 'react-native';
 
-export default function App() {
+import { AppNavigator } from './src/AppNavigator';
+import { ErrorBoundary } from './src/components/ErrorBoundary';
+import { getThemeColors } from './src/theme';
+import { useAppState } from './src/storage/state';
+
+const SENTRY_DSN = process.env.EXPO_PUBLIC_SENTRY_DSN ?? '';
+
+Sentry.init({
+  dsn: SENTRY_DSN || undefined,
+  enabled: Boolean(SENTRY_DSN),
+  enableInExpoDevelopment: false,
+  debug: false,
+  tracesSampleRate: 0.1,
+});
+
+function App() {
+  const state = useAppState();
+  const scheme = useColorScheme();
+  const colors = getThemeColors(state.settings.theme, scheme, state.settings.accentColor);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <>
       <StatusBar style="auto" />
-    </View>
+      <ErrorBoundary colors={colors}>
+        <AppNavigator />
+      </ErrorBoundary>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default Sentry.wrap(App);
